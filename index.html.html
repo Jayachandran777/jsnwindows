@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSN Windows & Doors | Premium uPVC Systems</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; font-family: 'Montserrat', sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { background: #fff; padding-top: 110px; color: #333; overflow-x: hidden; }
+
+        /* PRECISION SCROLLING OFFSET FOR HEADER */
+        section { scroll-margin-top: 110px; }
+
+        /* ================= HEADER ================= */
+        header {
+            background: #002b5c;
+            padding: 0 4%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            height: 110px;
+            z-index: 2000;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.5);
+        }
+        .logo { display: flex; align-items: center; gap: 20px; }
+        .logo img { height: 80px; width: auto; border-radius: 5px; } 
+        .logo-text {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(26px, 4.5vw, 42px);
+            font-weight: 700;
+            background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        nav a { color: #fff; text-decoration: none; font-weight: 700; font-size: 14px; text-transform: uppercase; margin-left: 25px; transition: 0.3s; }
+        nav a:hover { color: #FCF6BA; }
+
+        /* ================= HERO (FULL VIEW IMAGES) ================= */
+        .hero { height: 75vh; position: relative; overflow: hidden; display: flex; align-items: flex-end; justify-content: center; background: #000; }
+        .slide {
+            position: absolute; width: 100%; height: 100%; top:0; left:0;
+            background-size: contain; background-repeat: no-repeat; background-position: center;
+            opacity: 0; animation: fade 25s infinite;
+        }
+        .slide::after { content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 35%; background: linear-gradient(transparent, rgba(0,0,0,0.8)); }
+
+        .slide:nth-child(1) { background-image: url("upvc12.jpg"); opacity: 1; }
+        .slide:nth-child(2) { background-image: url("upvc5.webp"); animation-delay: 5s; }
+        .slide:nth-child(3) { background-image: url("upvc8.jpg"); animation-delay: 10s; }
+        .slide:nth-child(4) { background-image: url("upvc9.jpg"); animation-delay: 15s; }
+        .slide:nth-child(5) { background-image: url("Gemini_Generated_Image_in20qkin20qkin20.png"); animation-delay: 20s; }
+        @keyframes fade { 0%, 15% {opacity:1} 25%, 100% {opacity:0} }
+
+        .hero-quote-box {
+            position: relative; z-index: 10; background: rgba(0, 0, 0, 0.45); 
+            padding: 25px 60px; text-align: center; color: #fff;
+            backdrop-filter: blur(10px); border-top: 1px solid rgba(255, 255, 255, 0.2); width: 100%;
+        }
+        .hero-quote-box h1 { font-size: clamp(22px, 3vw, 36px); text-transform: uppercase; font-weight: 800; }
+        .hero-quote-box p { font-family: 'Oswald', sans-serif; font-size: 18px; color: #FCF6BA; letter-spacing: 5px; text-transform: uppercase; }
+
+        /* ================= ABOUT & PURPOSE TILES ================= */
+        #about { padding: 80px 10%; }
+        .about-main-layout { display: flex; align-items: center; gap: 60px; flex-wrap: wrap; margin-bottom: 60px; }
+        .about-img-box { flex: 1; min-width: 350px; }
+        .about-img-box img { width: 100%; border-radius: 8px; box-shadow: 20px 20px 0px #00aeef; }
+        
+        .tiles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
+        .about-tile { 
+            background: #ffffff; padding: 45px; border-top: 5px solid #002b5c; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.4s ease; border-radius: 0 0 10px 10px;
+        }
+        .about-tile:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(0,43,92,0.15); border-top-color: #00aeef; }
+        .about-tile h3 { font-family: 'Oswald', sans-serif; color: #002b5c; margin-bottom: 20px; text-transform: uppercase; font-size: 24px; }
+
+        /* ================= PRODUCTS (WITH HOVER) ================= */
+        .products-section { padding: 80px 8%; background: #f4f7f6; }
+        .section-title { font-weight: 800; text-align: center; color: #002b5c; margin-bottom: 50px; font-size: 36px; text-transform: uppercase; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .product-card { 
+            background: #fff; cursor: pointer; transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-radius: 8px; overflow: hidden; position: relative;
+        }
+        .product-card:hover { 
+            transform: translateY(-12px); 
+            box-shadow: 0 30px 60px rgba(0,43,92,0.15); 
+        }
+        .product-card img { width: 100%; height: 260px; object-fit: cover; transition: 0.5s ease; }
+        .product-card:hover img { transform: scale(1.05); }
+        .product-info { padding: 25px; font-weight: 700; font-family: 'Oswald', sans-serif; font-size: 20px; text-transform: uppercase; color: #002b5c; text-align: center; }
+
+        /* ================= WHY CHOOSE JSN ================= */
+        .why-container { overflow: hidden; padding: 40px 0; background: #fff; }
+        .why-track { display: flex; gap: 30px; animation: scrollWhy 40s linear infinite; width: max-content; }
+        .why-card { width: 300px; padding: 40px 25px; background: #f9f9f9; border-radius: 12px; text-align: center; flex-shrink: 0; transition: 0.3s; }
+        .why-card i { font-size: 35px; color: #00aeef; margin-bottom: 15px; }
+        .why-card h3 { font-family: 'Oswald', sans-serif; font-size: 18px; text-transform: uppercase; color: #002b5c; }
+        @keyframes scrollWhy { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* ================= GET A QUOTE (WITH NEW HOVER EFFECTS) ================= */
+        .enquiry-bar { padding: 60px 0; text-align: center; background: #002b5c; }
+        .btn-enq { 
+            padding: 18px 45px; text-decoration: none; font-weight: 700; color: #fff; 
+            display: inline-flex; align-items: center; gap: 12px; margin: 15px; 
+            text-transform: uppercase; border-radius: 5px; 
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            font-family: 'Oswald'; 
+        }
+        .btn-whatsapp { background: #25D366; border: 2px solid #25D366; }
+        .btn-whatsapp:hover { 
+            transform: scale(1.08); 
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4); 
+            background: #128C7E; border-color: #128C7E; 
+        }
+        .btn-email { border: 2px solid #BF953F; color: #FCF6BA; background: transparent; }
+        .btn-email:hover { 
+            background: linear-gradient(to right, #BF953F, #B38728); 
+            color: #001a33; transform: translateY(-5px); 
+            box-shadow: 0 10px 25px rgba(191, 149, 63, 0.3); 
+        }
+
+        /* ================= CONTACT ================= */
+        .contact-section { padding: 80px 8%; background: #001a33; color: #fff; text-align: center; }
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 50px; }
+        .contact-item i { color: #FCF6BA; font-size: 32px; margin-bottom: 15px; }
+        footer { background: #000; padding: 30px; color: #555; text-align: center; text-transform: uppercase; }
+
+        /* ================= MODAL ================= */
+        .modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); justify-content:center; align-items:center; z-index:3000; padding: 20px; }
+        .modal-content { background: white; max-width: 900px; width: 100%; position: relative; border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; }
+        .modal-header { padding: 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+        .modal-body { display: flex; flex-wrap: wrap; }
+        .modal-img-container { flex: 1; min-width: 300px; }
+        .modal-img-container img { width: 100%; height: 100%; object-fit: cover; max-height: 400px; }
+        .modal-text-container { flex: 1.2; min-width: 300px; padding: 35px; color: #444; line-height: 1.8; font-size: 16px; }
+
+        @media (max-width: 768px) { nav { display: none; } .modal-body { flex-direction: column; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="jsnlogo.png" alt="JSN Logo">
+            <div class="logo-text">JSN Windows & Doors</div>
+        </div>
+        <nav>
+            <a href="#about">Our Heritage</a>
+            <a href="#products">Our Products</a>
+            <a href="#why-jsn">Why JSN</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <div class="slide"></div><div class="slide"></div><div class="slide"></div><div class="slide"></div><div class="slide"></div>
+        <div class="hero-quote-box">
+            <h1>Quality That Lasts A Lifetime</h1>
+            <p>Elegance • Durability • Precision</p>
+        </div>
+    </div>
+
+    <section id="about">
+        <h2 class="section-title">Our Heritage</h2>
+        <div class="about-main-layout">
+            <div class="about-img-box"><img src="aboutuss.png" alt="About JSN"></div>
+            <div style="flex: 1.2; min-width: 350px;">
+                <p style="line-height: 1.8; font-size: 17px; color: #555;">At JSN Windows & Doors, we deliver uPVC systems that redefine architectural quality. By combining superior materials with expert craftsmanship, we provide solutions that stand the test of time and weather.</p>
+            </div>
+        </div>
+        <div class="tiles-grid">
+            <div class="about-tile">
+                <h3>Our Purpose</h3>
+                <p style="margin-bottom: 15px;"><b style="color:#00aeef">Vision:</b> To lead the industry in customized building solutions, improving lives through innovation and excellence.</p>
+                <p><b style="color:#00aeef">Mission:</b> To provide a passionate, service-driven experience that delivers exceptional results for every customer.</p>
+            </div>
+            <div class="about-tile">
+                <h3>Our Service</h3>
+                <p style="margin-bottom: 15px;"><b style="color:#00aeef">Expert Consultation:</b> On-site surveys to help you select the perfect profile for your architecture.</p>
+                <p><b style="color:#00aeef">Rapid Installation:</b> Dedicated team ensuring high-precision installation within four days of arrival.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="products-section" id="products">
+        <h2 class="section-title">Our Products</h2>
+        <div class="products-grid">
+            <div class="product-card" onclick="openModal('Sliding Windows', 'slidingwindow.webp', 'Our sliding windows feature a space-saving design with smooth-gliding tracks. They are perfect for modern homes with limited space, offering panoramic views and excellent weather sealing.')">
+                <img src="slidingwindow.webp">
+                <div class="product-info">Sliding Windows</div>
+            </div>
+            <div class="product-card" onclick="openModal('Casement Windows', 'casmentwindow.jpg', 'Designed for maximum ventilation, our casement windows open fully to invite fresh air and natural light. They feature reinforced frames and multi-point locking for added security.')">
+                <img src="casmentwindow.jpg">
+                <div class="product-info">Casement Windows</div>
+            </div>
+            <div class="product-card" onclick="openModal('Sliding Doors', 'slidingdoor.jpg', 'JSN sliding doors create a seamless transition between indoor and outdoor spaces. The heavy-duty rollers ensure effortless operation even for large glass panels.')">
+                <img src="slidingdoor.jpg">
+                <div class="product-info">Sliding Doors</div>
+            </div>
+            <div class="product-card" onclick="openModal('Casement Doors', 'casmentdoor.webp', 'Our casement doors offer a robust and secure solution for balcony access. They provide a high-performance barrier against noise and heat.')">
+                <img src="casmentdoor.webp">
+                <div class="product-info">Casement Doors</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="why-jsn" style="padding: 80px 0;">
+        <h2 class="section-title">Why Choose JSN</h2>
+        <div class="why-container">
+            <div class="why-track">
+                <div class="why-card"><i class="fas fa-sun"></i><h3>UV Protection</h3><p>Resists sunlight without yellowing.</p></div>
+                <div class="why-card"><i class="fas fa-volume-mute"></i><h3>Sound Insulation</h3><p>Blocks external noise efficiently.</p></div>
+                <div class="why-card"><i class="fas fa-award"></i><h3>Unmatched Quality</h3><p>International grade uPVC profiles.</p></div>
+                <div class="why-card"><i class="fas fa-cloud-showers-heavy"></i><h3>Weather Resistance</h3><p>Built for tropical rain and wind.</p></div>
+                <div class="why-card"><i class="fas fa-tint-slash"></i><h3>Leak Proof</h3><p>Advanced drainage prevents seepage.</p></div>
+                <div class="why-card"><i class="fas fa-leaf"></i><h3>Eco-Friendly</h3><p>100% recyclable materials.</p></div>
+                <div class="why-card"><i class="fas fa-tags"></i><h3>Competitive Price</h3><p>Luxury quality, fair pricing.</p></div>
+                <div class="why-card"><i class="fas fa-user-heart"></i><h3>Customer-Centric</h3><p>Service from design to install.</p></div>
+                <div class="why-card"><i class="fas fa-sun"></i><h3>UV Protection</h3><p>Resists sunlight without yellowing.</p></div>
+                <div class="why-card"><i class="fas fa-volume-mute"></i><h3>Sound Insulation</h3><p>Blocks external noise efficiently.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="enquiry-bar">
+            <h2 style="color:#fff; font-size: 32px; margin-bottom: 10px; text-transform: uppercase; font-weight: 800;">Get a Quote</h2>
+            <a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="btn-enq btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp Inquiry</a>
+            <a href="mailto:info@jsnupvc.com" class="btn-enq btn-email"><i class="fas fa-envelope"></i> Email Support</a>
+        </div>
+        <div class="contact-section">
+            <div class="contact-grid">
+                <div class="contact-item"><i class="fas fa-map-marker-alt"></i><h4 style="font-family:'Oswald';">Visit Us</h4><p>No. 12, Factory Lane, Industrial Estate, Guindy, Chennai, TN - 600032</p></div>
+                <div class="contact-item"><i class="fas fa-phone-alt"></i><h4 style="font-family:'Oswald';">Call Support</h4><p>+91 98765 43210</p></div>
+                <div class="contact-item"><i class="fas fa-envelope"></i><h4 style="font-family:'Oswald';">Email Us</h4><p>info@jsnupvc.com</p></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>&copy; 2025 JSN Windows & Doors | Precision Architectural Solutions</footer>
+
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle" style="font-family:'Oswald'; color:#002b5c; text-transform:uppercase;"></h3>
+                <span style="font-size:30px; cursor:pointer;" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="modal-img-container"><img id="modalImg" src=""></div>
+                <div class="modal-text-container"><p id="modalDesc"></p></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(t, i, d) {
+            document.getElementById('modalTitle').innerText = t;
+            document.getElementById('modalImg').src = i;
+            document.getElementById("modalDesc").innerText = d;
+            document.getElementById('productModal').style.display = "flex";
+            document.body.style.overflow = "hidden";
+        }
+        function closeModal() {
+            document.getElementById('productModal').style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+        window.onclick = function(e) { if (e.target.id == 'productModal') closeModal(); }
+    </script>
+
+</body>
+</html>
